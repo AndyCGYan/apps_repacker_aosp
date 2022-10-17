@@ -88,6 +88,17 @@ for f in $(cd out/org/codeaurora/telephony/utils;find -name \*.smali);do
     cp out/org/codeaurora/telephony/utils/$f ims/smali/org/codeaurora/telephony/utils/$f
 done
 
+rm -Rf out
+java -jar ../baksmali.jar d "$system_folder"/system/framework/moto-telephony.jar
+for f in $(cd out/com/motorola/android/telephony;find -name \*.smali);do
+    mkdir -p ims/smali/com/motorola/android/telephony/$(dirname $f)
+    cp out/com/motorola/android/telephony/$f ims/smali/com/motorola/android/telephony/$f
+done
+for f in $(cd out/com/motorola/android/internal/telephony;find -name \*.smali);do
+    mkdir -p ims/smali/com/motorola/android/internal/telephony/$(dirname $f)
+    cp out/com/motorola/android/internal/telephony/$f ims/smali/com/motorola/android/internal/telephony/$f
+done
+
 #java -jar ../baksmali.jar d "$system_folder"/system/framework/telephony-common.jar
 #mkdir -p ims/smali/com/android/internal/telephony/
 #cp ./telephony-common.jar.out/smali/com/android/internal/telephony/OemConstant* ims/smali/com/android/internal/telephony/
