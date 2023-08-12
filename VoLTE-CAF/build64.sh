@@ -33,12 +33,12 @@ for i in nativeloader nativehelper cutils utils gui binder c++ backtrace vndksup
 done
 cp "$PWD"/64/libpdx_default_transport.so "$libdst"
 
-for i in android.hardware.graphics.common@1.1.so android.hardware.graphics.mapper@2.1.so android.hardware.configstore@1.1.so android.hardware.media@1.0.so android.hardware.graphics.common@1.0.so android.hidl.token@1.0.so android.hardware.graphics.mapper@2.0.so android.hardware.graphics.allocator@2.0.so android.hidl.token@1.0-utils.so android.hardware.graphics.bufferqueue@1.0.so android.hardware.graphics.bufferqueue@2.0.so android.hardware.configstore@1.0.so android.hardware.configstore-utils.so android.hardware.graphics.common@1.2.so android.frameworks.bufferhub@1.0.so android.hardware.graphics.allocator@3.0.so android.hardware.graphics.mapper@3.0.so;do
+for i in android.hardware.graphics.common@1.1.so android.hardware.graphics.mapper@2.1.so android.hardware.configstore@1.1.so android.hardware.media@1.0.so android.hardware.graphics.common@1.0.so android.hidl.token@1.0.so android.hardware.graphics.mapper@2.0.so android.hardware.graphics.allocator@2.0.so android.hidl.token@1.0-utils.so android.hardware.graphics.bufferqueue@1.0.so android.hardware.graphics.bufferqueue@2.0.so android.hardware.configstore@1.0.so android.hardware.configstore-utils.so android.hardware.graphics.common@1.2.so android.hardware.graphics.allocator@3.0.so android.hardware.graphics.mapper@3.0.so;do
 	newName="$(echo "$i" |sed -E -e 's/^andr/libA/g' -e 's/@/-/g')"
 	cp "$system_folder"/system/lib64/$i "$libdst"/$newName
 done
 
-for i in android.hardware.graphics.common@1.1.so android.hardware.graphics.mapper@2.1.so android.hardware.configstore@1.1.so android.hardware.media@1.0.so android.hardware.graphics.common@1.0.so android.hidl.token@1.0.so android.hardware.graphics.mapper@2.0.so android.hardware.graphics.allocator@2.0.so android.hidl.token@1.0-utils.so android.hardware.graphics.bufferqueue@1.0.so android.hardware.graphics.bufferqueue@2.0.so android.hardware.configstore@1.0.so android.hardware.configstore-utils.so android.hardware.graphics.common@1.2.so android.frameworks.bufferhub@1.0.so android.hardware.graphics.allocator@3.0.so android.hardware.graphics.mapper@3.0.so;do
+for i in android.hardware.graphics.common@1.1.so android.hardware.graphics.mapper@2.1.so android.hardware.configstore@1.1.so android.hardware.media@1.0.so android.hardware.graphics.common@1.0.so android.hidl.token@1.0.so android.hardware.graphics.mapper@2.0.so android.hardware.graphics.allocator@2.0.so android.hidl.token@1.0-utils.so android.hardware.graphics.bufferqueue@1.0.so android.hardware.graphics.bufferqueue@2.0.so android.hardware.configstore@1.0.so android.hardware.configstore-utils.so android.hardware.graphics.common@1.2.so android.hardware.graphics.allocator@3.0.so android.hardware.graphics.mapper@3.0.so;do
 	newName="$(echo "$i" |sed -E -e 's/^andr/libA/g' -e 's/@/-/g')"
 	sed -i -E "s/$i/$newName/g" "$libdst"/*.so
 done
